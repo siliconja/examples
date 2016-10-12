@@ -10,3 +10,6 @@ fi
 subj="/C=US/ST=WA/O=core-dev/CN=$1"
 
 openssl req -days 3650 -subj $subj -nodes -new -keyout $1.key -out $1.csr -config openssl.cnf
+
+# openssl genrsa -aes128 -passout pass:foobar 2048
+
