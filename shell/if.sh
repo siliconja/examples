@@ -14,3 +14,12 @@ else
   echo "try again"
 fi
 
+if [ ! -d /etc/foo ] && [ ! -d /etc/bar ]; then
+  echo "missing foo and bar!"
+fi
+
+if [ "$1" = "foo" -o "$1" = "bar" ]; then
+  echo "condition met"
+else
+  echo "false"
+fi
