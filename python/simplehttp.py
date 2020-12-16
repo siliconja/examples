@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # python -m SimpleHTTPServer
-# python3 -m https.server
+# python3 -m http.server
 
 import SimpleHTTPServer
 import SocketServer
