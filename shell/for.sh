@@ -7,3 +7,8 @@ for item in $list; do
     echo "$i: $item"
     let i=i+1
 done
+
+
+for j in {0..5}; do
+    echo "j=$j"
+done
