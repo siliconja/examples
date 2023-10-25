@@ -2,6 +2,8 @@
 
 #define NEOPX_PIN 8
 #define ONBOARD_LED 7
+// stop sign red LED - D1/TX
+#define STOP_SIGN_LED 1
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, NEOPX_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -32,6 +34,8 @@ void setup() {
   for (int i=0; i<2; i++)
     pinMode(top_red_leds[i], OUTPUT);
 
+  pinMode(STOP_SIGN_LED, OUTPUT);
+
   // neopixel init
   strip.begin();
   strip.setBrightness(50);
@@ -52,17 +56,37 @@ void blink_two(int &cursor, int arr[2]) {
 
 void loop() {
 
+  // chassis blink 500ms
   blink_two(front_cursor, front_red_leds);
   blink_two(rear_cursor, rear_red_leds);
   blink_two(top_cursor, top_red_leds);
+
+  // stop sign blink 250ms
+  digitalWrite(STOP_SIGN_LED, HIGH);
   digitalWrite(ONBOARD_LED, HIGH); // onboard red ON
   strip.setPixelColor(0, strip.Color(0, 0, 0));   // onboard neopixel goes off
   strip.show();
   delay(250);
 
+  digitalWrite(STOP_SIGN_LED, LOW);
+  digitalWrite(ONBOARD_LED, LOW); // onboard red ON
+  strip.setPixelColor(0, strip.Color(255, 0, 0)); // onboard neopixel goes red
+  strip.show();
+  delay(250);
+
+  // chassis blink 500ms
   blink_two(front_cursor, front_red_leds);
   blink_two(rear_cursor, rear_red_leds);
   blink_two(top_cursor, top_red_leds);
+
+  // stop sign blink 250ms
+  digitalWrite(STOP_SIGN_LED, HIGH);
+  digitalWrite(ONBOARD_LED, HIGH); // onboard red ON
+  strip.setPixelColor(0, strip.Color(0, 0, 0));   // onboard neopixel goes off
+  strip.show();
+  delay(250);
+  
+  digitalWrite(STOP_SIGN_LED, LOW);
   digitalWrite(ONBOARD_LED, LOW); // onboard red OFF
   strip.setPixelColor(0, strip.Color(255, 0, 0)); // onboard neopixel goes red
   strip.show();
