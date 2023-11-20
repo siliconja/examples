@@ -12,7 +12,8 @@ for v in ${myarray[*]} ; do
   echo "  value: $v"
 done
 
-myarray2="foo bar baz"
+myarray2_input="foo bar baz"
+read -r -a myarray2 <<< "$myarray2_input"
 
 echo "myarray2[] = ${myarray2[*]}"
 echo "myarray2[1] = ${myarray2[1]}"
