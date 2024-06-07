@@ -23,3 +23,6 @@ repl3="${repl//f/big}"
 echo "$repl --> $repl2"
 echo "$repl --> $repl3"
 
+exclude="this-test"
+name="this-test-is-starting-12455"
+[[ ${name} =~ ^${exclude} ]] && echo "exclude true" || echo "exclude false"

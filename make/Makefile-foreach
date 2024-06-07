@@ -1,0 +1,8 @@
+
+LIST := foo bar baz
+
+build:
+        @echo "this is the build"
+        @$(foreach item,$(LIST),echo item: $(item) && echo also: $(item);)
+        @echo "and now we're done"
+.PHONY build
